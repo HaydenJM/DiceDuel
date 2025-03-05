@@ -1,0 +1,154 @@
+<!-- 
+Licensed under the Open Source License for "Dice Duel". 
+See LICENSE.txt for details.
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Duel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-bubbles"></div>
+    
+    <div class="game-container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <h1>Dice Duel</h1>
+            <div class="start-buttons">
+                <button id="singleplayer-btn">Singleplayer</button>
+                <button id="multiplayer-btn">Two-Player</button>
+                <button id="help-btn">Help/Rules</button>
+            </div>
+        </div>
+
+        <!-- Multiplayer Mode Selection Screen -->
+        <div id="multiplayer-modes" class="screen">
+            <h2>Multiplayer Modes</h2>
+            <div class="mode-buttons">
+                <button id="mode-1round">1 Round</button>
+                <button id="mode-3rounds">3 Rounds</button>
+                <button id="mode-5rounds">5 Rounds</button>
+                <button id="mode-unlimited">Unlimited Rounds</button>
+                <button id="return-to-start">Return to Start</button>
+            </div>
+        </div>
+
+        <!-- Help/Rules Screen -->
+        <div id="help-screen" class="screen">
+            <h2>Dice Duel Rules</h2>
+            <div class="rules-content">
+                <h3>Objective</h3>
+                <p>Be the first to mark off all 12 numbers on your list.</p>
+                
+                <h3>Basic Gameplay</h3>
+                <p>Players take turns rolling two six-sided dice. You can mark off:</p>
+                <ul>
+                    <li>A number matching one die</li>
+                    <li>A number matching the sum of both dice</li>
+                </ul>
+                
+                <h3>Special Rules</h3>
+                <p>Rolling doubles gives an extra turn. If doubles are rolled again, no additional turn is granted.</p>
+                
+                <h3>Scoring</h3>
+                <p>Winner receives 78 points. Opponent scores the sum of their marked numbers.</p>
+            </div>
+            <button id="close-help">Close Rules</button>
+        </div>
+
+        <!-- Main Game Board -->
+        <div id="game-board" class="screen">
+            <div class="in-game-controls">
+                <button id="restart-game">Restart Game</button>
+                <button id="return-to-menu">Return to Menu</button>
+            </div>
+
+            <header>
+                <h1>Dice Duel</h1>
+                <div class="game-mode-display"></div>
+            </header>
+
+            <div class="game-board">
+                <div class="player player1">
+                    <h2>Player 1</h2>
+                    <div class="number-grid">
+                        <div class="number-grid-row">
+                            <div class="number" data-number="1">1</div>
+                            <div class="number" data-number="2">2</div>
+                            <div class="number" data-number="3">3</div>
+                            <div class="number" data-number="4">4</div>
+                            <div class="number" data-number="5">5</div>
+                            <div class="number" data-number="6">6</div>
+                        </div>
+                        <div class="number-grid-row">
+                            <div class="number" data-number="7">7</div>
+                            <div class="number" data-number="8">8</div>
+                            <div class="number" data-number="9">9</div>
+                            <div class="number" data-number="10">10</div>
+                            <div class="number" data-number="11">11</div>
+                            <div class="number" data-number="12">12</div>
+                        </div>
+                    </div>
+                    <div class="player-score">Score: <span id="player1-score">0</span></div>
+                </div>
+
+                <div class="dice-section">
+					<div class="dice dice1">1</div>
+					<div class="dice dice2">1</div>
+					<div class="dice dice-sum">2</div>
+					<button id="roll-dice">Roll Dice</button>
+				</div>
+
+                <div class="player player2">
+                    <h2>Player 2</h2>
+                    <div class="number-grid">
+                        <div class="number-grid-row">
+                            <div class="number" data-number="1">1</div>
+                            <div class="number" data-number="2">2</div>
+                            <div class="number" data-number="3">3</div>
+                            <div class="number" data-number="4">4</div>
+                            <div class="number" data-number="5">5</div>
+                            <div class="number" data-number="6">6</div>
+                        </div>
+                        <div class="number-grid-row">
+                            <div class="number" data-number="7">7</div>
+                            <div class="number" data-number="8">8</div>
+                            <div class="number" data-number="9">9</div>
+                            <div class="number" data-number="10">10</div>
+                            <div class="number" data-number="11">11</div>
+                            <div class="number" data-number="12">12</div>
+                        </div>
+                    </div>
+                    <div class="player-score">Score: <span id="player2-score">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modals -->
+        <div id="confirmation-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3 id="confirmation-title">Confirm Action</h3>
+                <p id="confirmation-message">Are you sure you want to do this?</p>
+                <div class="confirmation-buttons">
+                    <button id="confirm-action">Confirm</button>
+                    <button id="cancel-action">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Modal -->
+        <div id="results-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Results</h2>
+                <div id="results-text"></div>
+                <button id="close-results">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
